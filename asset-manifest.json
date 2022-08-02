@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/blog-app-react/static/js/main.7105936e.js",
-    "index.html": "/blog-app-react/index.html",
-    "main.7105936e.js.map": "/blog-app-react/static/js/main.7105936e.js.map"
+    "main.js": "./static/js/main.7105936e.js",
+    "index.html": "./index.html",
+    "main.7105936e.js.map": "./static/js/main.7105936e.js.map"
   },
   "entrypoints": [
     "static/js/main.7105936e.js"
