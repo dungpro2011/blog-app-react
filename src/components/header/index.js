@@ -1,15 +1,21 @@
 import React from 'react'
-import { Typography } from '@material-ui/core';
-import useStyles from './styles';
+import { Typography } from '@mui/material';
 
 
 
 export default function Header() {
-  const classes = useStyles();
 
   return (
-      <Typography variant='h4' align='center' className={classes.container}>
-        Blog
-      </Typography>    
+
+    <Typography variant='h4' align='center'
+      sx={{
+        backgroundColor: 'blue',
+        color: 'white',
+        marginBottom: 1,
+        fontWeight: 'lighter',
+        padding: '5px 0',
+      }}>
+      Blog
+    </Typography>
   );
 }

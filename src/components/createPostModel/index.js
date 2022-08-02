@@ -1,11 +1,26 @@
-import { Button, Modal, TextareaAutosize, TextField } from '@material-ui/core';
+import Modal from '@mui/material/Modal/';
+import Button from '@mui/material/Button';
+import { TextField, TextareaAutosize, Box } from '@mui/material';
+
+
 import FileBase64 from 'react-file-base64';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalState$ } from '../../redux/selectors';
 import { createPost, hideModal } from '../../redux/actions/index';
-import useStyles from './styles';
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '1px solid gray',
+  boxShadow: 14,
+
+  p: 4,
+};
 
 export default function CreatePostModal() {
   const [data, setData] = useState({
@@ -15,7 +30,6 @@ export default function CreatePostModal() {
   });
   const dispatch = useDispatch();
   const { isShow } = useSelector(modalState$);
-  const classes = useStyles();
 
   const onClose = useCallback(() => {
     dispatch(hideModal());
@@ -33,23 +47,30 @@ export default function CreatePostModal() {
   }, [data, onClose, dispatch]);
 
   const body = (
-    <div className={classes.paper} id='simple-modal-title'>
+    <Box sx={style} id='simple-modal-title'>
       <h2>Create New Post</h2>
-      <form noValidate autoComplete='off' className={classes.form}>
+      <form noValidate autoComplete='off' style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
         <TextField
-          className={classes.title}
           required
           label='Title'
           value={data.title}
           onChange={(e) => setData({ ...data, title: e.target.value })}
+          sx={{ marginBottom: '10px' }}
         />
         <TextareaAutosize
-          className={classes.textarea}
-          rowsMin={10}
-          rowsMax={15}
+          sx={{
+            padding: '10px',
+            marginBottom: '10px',
+          }}
+          minRows={10}
+          maxRows={15}
           placeholder='Content...'
           value={data.content}
           onChange={(e) => setData({ ...data, content: e.target.value })}
+
         />
 
         <FileBase64
@@ -59,7 +80,7 @@ export default function CreatePostModal() {
           value={data.attachment}
           onDone={({ base64 }) => setData({ ...data, attachment: base64 })} />
 
-        <div className={classes.footer}>
+        <div style={{ marginTop: '10px' }} >
           <Button
             variant='contained'
             color='primary'
@@ -71,7 +92,7 @@ export default function CreatePostModal() {
           </Button>
         </div>
       </form>
-    </div>
+    </Box>
   );
 
   return (

@@ -1,16 +1,18 @@
 import React, { useCallback } from "react";
-import { Container, Fab } from "@material-ui/core";
-import AddIcon from '@material-ui/icons/Add'
+import { Container, Fab } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add'
+
 
 import Header from "../components/header";
 import PostList from "../components/postList";
-import useStyles from "./styles";
 import { useDispatch } from "react-redux";
 import { showModal } from "../redux/actions";
 import CreatePostModal from "../components/createPostModel";
+import * as styles from "./styles"
 
 const HomePage = () => {
-  const classes = useStyles();
+  const fab = styles.fab;
+  
   const dispatch = useDispatch();
 
   const openModal = useCallback(() => {
@@ -25,8 +27,8 @@ const HomePage = () => {
         <CreatePostModal />
         <Fab
           color='primary'
-          className={classes.fab}
           onClick={openModal}
+          sx={fab}
         >
           <AddIcon />
         </Fab>

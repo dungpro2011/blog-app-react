@@ -8,10 +8,11 @@ import {
   CardMedia,
   IconButton,
   Typography,
-  Tooltip
-} from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+  Tooltip,
+  autocompleteClasses
+} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import moment from 'moment';
 import useStyles from './styles';
 import { deletePost, updatePost } from '../../../redux/actions';
@@ -32,7 +33,7 @@ export default function Post({ post }) {
   const onClickDelete = useCallback(() => {
     dispatch(deletePost.deletePostRequest(post));
 
-  }, [dispatch, post ]);
+  }, [dispatch, post]);
 
   return (
     <Card>
@@ -51,7 +52,10 @@ export default function Post({ post }) {
       <CardMedia
         image={post.attachment || ''}
         title='Title'
-        className={classes.media}
+        sx={{
+          height: 100,
+          margin: 1,
+        }}
       />
       <CardContent>
         <Typography variant='h5' color='textPrimary'>

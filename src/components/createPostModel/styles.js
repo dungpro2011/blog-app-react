@@ -1,7 +1,6 @@
-import { makeStyles } from '@material-ui/core';
+import { createStyles } from "@mui/material";
 
-export default makeStyles((theme) => ({
-  paper: {
+export const useStyle = createStyles((theme) => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -10,22 +9,4 @@ export default makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  header: {
-    margin: '0 0 10px 0',
-  },
-  title: {
-    marginBottom: '10px',
-  },
-  textarea: {
-    padding: '10px',
-    marginBottom: '10px',
-  },
-  footer: {
-    marginTop: '10px',
-  },
 }));

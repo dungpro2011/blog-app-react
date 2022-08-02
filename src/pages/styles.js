@@ -1,9 +1,8 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles } from '@mui/material/styles';
 
-export default makeStyles((theme) => ({
-  fab: {
-    position: 'fixed',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
-}));
+export const fab = createStyles((theme) => ({
+  position: 'fixed',
+  bottom: theme.spacing(2),
+  right: theme.spacing(4),
+}
+));

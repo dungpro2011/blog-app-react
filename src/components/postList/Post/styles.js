@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core';
+import { createStyles } from '@mui/material/styles';
 
-export default makeStyles(() => ({
+export default createStyles(() => ({
   media: {
     height: 100,
     margin: 10,

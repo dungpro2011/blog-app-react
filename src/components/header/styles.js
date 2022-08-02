@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { createStyles } from "@mui/material";
 
-export default makeStyles((theme) => ({
+export default createStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.primary.main,
     color: 'white',
