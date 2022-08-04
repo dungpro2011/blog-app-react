@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import HomePage from './pages/HomePage';
+import Login from './pages/login';
 import * as actions from './redux/actions';
 
 function App() {
@@ -7,7 +8,12 @@ function App() {
 
   dispatch(actions.getPosts.getPostsRequest());
 
-  return <HomePage />;
+  return (
+    <>
+      <Login />
+      {/* <HomePage /> */}
+    </>
+  );
 }
 
 export default App;

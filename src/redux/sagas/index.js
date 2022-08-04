@@ -13,6 +13,28 @@ function* fetchDataSaga(action) {
       }
 }
 
+function* loginSaga(action) {
+  try {
+      const posts = yield call(api.fetchPosts);
+      console.log('[posts]', posts);
+      yield put(actions.getPosts.getPostsSuccess(posts.data));
+    } catch (err) {
+      console.error(err);
+      yield put(actions.getPosts.getPostsFailure(err));
+    }
+}
+
+function* registerSaga(action) {
+  try {
+      const posts = yield call(api.fetchPosts);
+      console.log('[posts]', posts);
+      yield put(actions.getPosts.getPostsSuccess(posts.data));
+    } catch (err) {
+      console.error(err);
+      yield put(actions.getPosts.getPostsFailure(err));
+    }
+}
+
 function* createDataSaga(action) {
   try {
       const post = yield call(api.createPost, action.payload);
@@ -45,9 +67,13 @@ function* deleteDataSaga(action) {
 }
 
 export default function* mySaga() {
+    //post action
     yield takeEvery(actions.getPosts.getPostsRequest, fetchDataSaga);
     yield takeLatest(actions.createPost.createPostRequest, createDataSaga);
     yield takeLatest(actions.updatePost.updatePostRequest, updateDataSaga);
     yield takeLatest(actions.deletePost.deletePostRequest, deleteDataSaga);
+    // login and register actions
+    yield takeLatest(actions.login.loginPostRequest, loginSaga);
+    yield takeLatest(actions.register.registerPostRequest, registerSaga);
 
 };
