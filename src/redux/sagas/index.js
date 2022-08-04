@@ -68,7 +68,7 @@ function* deleteDataSaga(action) {
 
 export default function* mySaga() {
     //post action
-    yield takeEvery(actions.getPosts.getPostsRequest, fetchDataSaga);
+    yield takeLatest(actions.getPosts.getPostsRequest, fetchDataSaga);
     yield takeLatest(actions.createPost.createPostRequest, createDataSaga);
     yield takeLatest(actions.updatePost.updatePostRequest, updateDataSaga);
     yield takeLatest(actions.deletePost.deletePostRequest, deleteDataSaga);
