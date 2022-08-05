@@ -22,18 +22,22 @@ const style = {
   p: 4,
 };
 
-export default function CreatePostModal() {
+export default function CreatePostModal({name}) {
   const [data, setData] = useState({
+    author: name.toUpperCase(),
     title: '',
     content: '',
     attachment: '',
   });
+
+  console.log('data_created : ' , data);
   const dispatch = useDispatch();
   const { isShow } = useSelector(modalState$);
 
   const onClose = useCallback(() => {
     dispatch(hideModal());
     setData({
+
       title: '',
       content: '',
       attachment: '',

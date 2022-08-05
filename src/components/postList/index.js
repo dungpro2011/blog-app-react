@@ -9,7 +9,7 @@ export default function PostList() {
   const dispatch = useDispatch();
 
   const posts = useSelector(postsState$);
-  console.log('[postsList]', posts);
+  // console.log('[postsList]', posts);
 
   useEffect(() => {
     dispatch(getPosts.getPostsRequest());

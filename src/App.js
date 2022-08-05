@@ -4,9 +4,9 @@ import Login from './pages/login';
 import * as actions from './redux/actions';
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  dispatch(actions.getPosts.getPostsRequest());
+  // dispatch(actions.getPosts.getPostsRequest());
 
   return (
     <>
