@@ -5,7 +5,6 @@ import { getType, login, register } from "../actions";
 export default function userReducers(state = INIT_STATE.user, action) {
     switch (action.type) {
         case getType(login.loginRequest):
-            console.log("Login request: ", action.payload);
             return {
                 ...state,
                 isLogin: false,

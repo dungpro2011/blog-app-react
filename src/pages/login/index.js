@@ -1,20 +1,18 @@
 import React from 'react'
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback } from 'react';
 import { loginState$, nameState$ } from '../../redux/selectors'
 import { login } from '../../redux/actions';
-import { useEffect } from 'react';
 import HomePage from '../HomePage';
 
 
-const styless = {
+const style = {
     display: 'block',
     position: 'absolute',
     marginTop: '10%',
     left: '35%',
-    // transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, -50%)',
     width: 400,
     border: '1px solid gray',
     boxShadow: 14,
@@ -26,14 +24,13 @@ function Login() {
     const [data, setData] = useState({
         name: '',
         password: ''
-    })
+    });
+
     const dispatch = useDispatch();
     const { isLogin } = useSelector(loginState$);
     const nameState = useSelector(nameState$);
 
-
-    console.log('nameState', nameState);
-    console.log('is Login', isLogin);
+    console.log(nameState);
 
     const handleLogin = () => {
         if (data.name === '' && data.password === '') {
@@ -42,9 +39,12 @@ function Login() {
         dispatch(login.loginRequest(data));
     };
 
+
+
     const signIn = (
-        <div>
-            <Box sx={styless} id='simple-modal-title'>
+        <Container>
+
+            <Box sx={style} id='simple-modal-title'>
                 <form noValidate autoComplete='off' style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -54,10 +54,10 @@ function Login() {
                     <Typography variant='h4' marginBottom='20px' ><strong>Login</strong></Typography>
 
                     <TextField
-
+                        autoFocus={true}
                         name='username'
                         sx={{ marginBottom: '10px' }}
-                        label="username"
+                        label="Username"
                         type="text"
                         value={data.name}
                         onChange={e => setData({ ...data, name: e.target.value })}
@@ -80,16 +80,17 @@ function Login() {
                     </Button>
                 </form>
             </Box>
-        </div>
+        </Container>
+
 
     );
 
 
     return (
-        <div>
+        <Container >
             {console.log("render: ", isLogin)}
-            {isLogin? <HomePage name={nameState} />:signIn }
-        </div>
+            {isLogin ? <HomePage name={nameState} /> : signIn}
+        </Container>
     )
 }
 

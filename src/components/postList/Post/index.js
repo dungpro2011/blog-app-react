@@ -35,10 +35,13 @@ export default function Post({ post }) {
 
   }, [dispatch, post]);
 
+  const nameLog = post.author.slice(0,2);
+  console.log('name: ' + nameLog);
+
   return (
     <Card>
       <CardHeader
-        avatar={<Avatar>A</Avatar>}
+        avatar={<Avatar>{nameLog}</Avatar>}
         title={post.author}
         subheader={moment(post.updatedAt).format('HH:MM MMM DD,YYYY')}
         action={

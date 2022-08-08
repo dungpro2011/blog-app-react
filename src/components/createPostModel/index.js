@@ -37,7 +37,7 @@ export default function CreatePostModal({name}) {
   const onClose = useCallback(() => {
     dispatch(hideModal());
     setData({
-
+      author: name.toUpperCase(),
       title: '',
       content: '',
       attachment: '',

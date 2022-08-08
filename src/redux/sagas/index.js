@@ -1,11 +1,10 @@
-import { call, takeLatest, put, takeEvery } from 'redux-saga/effects'
+import { call, takeLatest, put, takeEvery} from 'redux-saga/effects'
 import * as actions from '../actions';
 import * as api from '../../api';
 
 function* fetchDataSaga(action) {
   try {
     const posts = yield call(api.fetchPosts);
-    console.log('[posts]', posts);
     yield put(actions.getPosts.getPostsSuccess(posts.data));
   } catch (err) {
     console.error(err);
@@ -16,10 +15,7 @@ function* fetchDataSaga(action) {
 function* loginSaga(action) {
   try {
     const login = yield call(api.login, action.payload);
-    console.log('Login-saga: ', action.payload);
-
     yield put(actions.login.loginSuccess(login.data));
-    console.log("data-login:", login.data);
   } catch (err) {
     console.error(err);
     yield put(actions.login.loginFailure(err));
@@ -71,7 +67,7 @@ export default function* mySaga() {
   yield takeLatest(actions.login.loginRequest, loginSaga);
 
   //post action
-  yield takeLatest(actions.getPosts.getPostsRequest, fetchDataSaga);
+  yield takeEvery(actions.getPosts.getPostsRequest, fetchDataSaga);
   yield takeLatest(actions.createPost.createPostRequest, createDataSaga);
   yield takeLatest(actions.updatePost.updatePostRequest, updateDataSaga);
   yield takeLatest(actions.deletePost.deletePostRequest, deleteDataSaga);
